@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <div style="background-color: #dcdcdc; padding: 10px; margin-bottom: 20px;">
+        <p>This exam score calculator is for personal use only. Adjust scores as needed for your specific purposes.</p>
+    </div>
+    <title>Exam Score Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        h3 {
+            color: #555;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 15px;
+            width: 60px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Exam Score Calculator</h2>
+
+<!-- Lessen Section -->
+<h3>Lessen</h3>
+<label>Teil 1 (0-6): <input type="number" id="lessen_teil1" min="0" max="6"></label><br>
+<label>Teil 2 (0-6): <input type="number" id="lessen_teil2" min="0" max="6"></label><br>
+<label>Teil 3 (0-7): <input type="number" id="lessen_teil3" min="0" max="7"></label><br>
+<label>Teil 4 (0-7): <input type="number" id="lessen_teil4" min="0" max="7"></label><br>
+<label>Teil 5 (0-4): <input type="number" id="lessen_teil5" min="0" max="4"></label><br>
+
+<!-- Horen Section -->
+<h3>Horen</h3>
+<label>Teil 1 (0-5): <input type="number" id="horen_teil1" min="0" max="5"></label><br>
+<label>Teil 2 (0-5): <input type="number" id="horen_teil2" min="0" max="5"></label><br>
+<label>Teil 3 (0-7): <input type="number" id="horen_teil3" min="0" max="7"></label><br>
+<label>Teil 4 (0-8): <input type="number" id="horen_teil4" min="0" max="8"></label><br>
+
+<!-- Schreiben Section -->
+<h3>Schreiben</h3>
+<label>Teil 1 (0-40): <input type="number" id="schreiben_teil1" min="0" max="40"></label><br>
+<label>Teil 2 (0-40): <input type="number" id="schreiben_teil2" min="0" max="40"></label><br>
+<label>Teil 3 (0-20): <input type="number" id="schreiben_teil3" min="0" max="20"></label><br>
+
+<!-- Sprechen Section -->
+<h3>Sprechen</h3>
+<label>Teil 1 (0-28): <input type="number" id="sprechen_teil1" min="0" max="28"></label><br>
+<label>Teil 2 (0-40): <input type="number" id="sprechen_teil2" min="0" max="40"></label><br>
+<label>Teil 3 (0-16): <input type="number" id="sprechen_teil3" min="0" max="16"></label><br>
+<label>Aussprache und Intonation (0-16): <input type="number" id="aussprache_und_intonation" min="0" max="16"></label><br>
+
+<!-- Calculate Button -->
+<button onclick="calculateScores()">Calculate Scores</button>
+
+<!-- Results Section -->
+<h3>Results</h3>
+<p id="results"></p>
+
+<script>
+    function calculateScores() {
+        // Lessen Scores
+        var lessen_teil1 = parseInt(document.getElementById("lessen_teil1").value);
+        var lessen_teil2 = parseInt(document.getElementById("lessen_teil2").value);
+        var lessen_teil3 = parseInt(document.getElementById("lessen_teil3").value);
+        var lessen_teil4 = parseInt(document.getElementById("lessen_teil4").value);
+        var lessen_teil5 = parseInt(document.getElementById("lessen_teil5").value);
+
+        var total_possible_score_lessen = 30;
+        var total_score_lessen = lessen_teil1 + lessen_teil2 + lessen_teil3 + lessen_teil4 + lessen_teil5;
+        var lessen_score_percentage = (total_score_lessen / total_possible_score_lessen) * 100;
+
+        // Horen Scores
+        var horen_teil1 = parseInt(document.getElementById("horen_teil1").value);
+        var horen_teil2 = parseInt(document.getElementById("horen_teil2").value);
+        var horen_teil3 = parseInt(document.getElementById("horen_teil3").value);
+        var horen_teil4 = parseInt(document.getElementById("horen_teil4").value);
+
+        var total_possible_score_horen = 30;
+        var total_score_horen = horen_teil1 * 2 + horen_teil2 + horen_teil3 + horen_teil4;
+        var horen_score_percentage = (total_score_horen / total_possible_score_horen) * 100;
+
+        // Schreiben Scores
+        var schreiben_teil1 = parseInt(document.getElementById("schreiben_teil1").value);
+        var schreiben_teil2 = parseInt(document.getElementById("schreiben_teil2").value);
+        var schreiben_teil3 = parseInt(document.getElementById("schreiben_teil3").value);
+
+        var total_possible_score_schreiben = 100;
+        var total_score_schreiben = schreiben_teil1 + schreiben_teil2 + schreiben_teil3;
+        var schreiben_score_percentage = (total_score_schreiben / total_possible_score_schreiben) * 100;
+
+        // Sprechen Scores
+        var sprechen_teil1 = parseInt(document.getElementById("sprechen_teil1").value);
+        var sprechen_teil2 = parseInt(document.getElementById("sprechen_teil2").value);
+        var sprechen_teil3 = parseInt(document.getElementById("sprechen_teil3").value);
+        var aussprache_und_intonation = parseInt(document.getElementById("aussprache_und_intonation").value);
+
+        var total_possible_score_sprechen = 100;
+        var total_score_sprechen = sprechen_teil1 + sprechen_teil2 + sprechen_teil3 + aussprache_und_intonation;
+        var sprechen_score_percentage = (total_score_sprechen / total_possible_score_sprechen) * 100;
+
+        // Display Results
+        var results = `<strong>Lessen Score:</strong> ${lessen_score_percentage.toFixed(2)}%<br>`;
+        results += `<strong>Horen Score:</strong> ${horen_score_percentage.toFixed(2)}%<br>`;
+        results += `<strong>Schreiben Score:</strong> ${schreiben_score_percentage.toFixed(2)}%<br>`;
+        results += `<strong>Sprechen Score:</strong> ${sprechen_score_percentage.toFixed(2)}%<br>`;
+
+        document.getElementById("results").innerHTML = results;
+    }
+</script>
+
+</body>
+</html>

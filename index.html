@@ -71,7 +71,7 @@
 
 <!-- Horen Section -->
 <h3>Horen</h3>
-<label>Teil 1 (0-5): <input type="number" id="horen_teil1" min="0" max="5"></label><br>
+<label>Teil 1 (0-10): <input type="number" id="horen_teil1" min="0" max="10"></label><br>
 <label>Teil 2 (0-5): <input type="number" id="horen_teil2" min="0" max="5"></label><br>
 <label>Teil 3 (0-7): <input type="number" id="horen_teil3" min="0" max="7"></label><br>
 <label>Teil 4 (0-8): <input type="number" id="horen_teil4" min="0" max="8"></label><br>
@@ -116,7 +116,7 @@
         var horen_teil4 = parseInt(document.getElementById("horen_teil4").value);
 
         var total_possible_score_horen = 30;
-        var total_score_horen = horen_teil1 * 2 + horen_teil2 + horen_teil3 + horen_teil4;
+        var total_score_horen = horen_teil1 + horen_teil2 + horen_teil3 + horen_teil4;
         var horen_score_percentage = (total_score_horen / total_possible_score_horen) * 100;
 
         // Schreiben Scores
